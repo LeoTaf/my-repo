@@ -1,0 +1,36 @@
+GENERACION DE UN ESPIRAL DE COLORES CON PUNTOS DISPERSOS  
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+#parámetros
+p = 500 
+Numero_puntos = p
+t = np.linspace(0, 4 * np.pi, p)  
+
+#espiral
+r = np.linspace(0, 5, p) + np.random.normal(0, 0.2, p)
+radio = r
+
+
+x = r * np.cos(t)
+y = r * np.sin(t)
+
+colores = t
+
+#cálculos
+diametro = 2 * r  
+perimetro = 2 * np.pi * r  
+perimetro_total = np.sum(perimetro)  
+
+#resultados
+print(f"Radio promedio: {np.mean(radio)}")
+print(f"Diámetro promedio: {np.mean(diametro)}")
+print(f"Perímetro total aproximado: {perimetro_total}")
+
+plt.figure(figsize=(6, 6))
+plt.scatter(x, y, c=colores, cmap='hsv', s=10, alpha=0.8 )
+plt.title("Espiral de colores con puntos dispersos")
+plt.axis('on') 
+plt.show()
+
